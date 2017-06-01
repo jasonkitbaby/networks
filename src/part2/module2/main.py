@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
     G = nx.DiGraph()
     for i in range(len(data)):
-        loan_name = data.get_value(i, 'loan_name')
+        loan_name = data.get_value(i, 'loaner_name')
         tender_name = data.get_value(i, 'tender_name')
         G.add_node(tender_name,node_color='r')
         G.add_node(loan_name,node_color='g')
