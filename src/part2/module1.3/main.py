@@ -42,7 +42,7 @@ if __name__ == '__main__':
     for i in range(len(data)):
         loan_id = data.get_value(i, 'loanid')
         tender_name = data.get_value(i, 'tender_name')
-        product_amount = data.get_value(i, 'product_amount')
+        product_amount = data.get_value(i, 'loan_term')
 
         loan_id_list.append(loan_id)
         tender_name_list.append(tender_name)
@@ -85,14 +85,14 @@ if __name__ == '__main__':
     x = list(ave_degree_dict.keys())
     y = list(ave_degree_dict.values())
     plt.plot(x, y,'yo',markersize = 5, marker='.')
-    plt.xlabel('amount')
+    plt.xlabel('loan_term')
     plt.ylabel('avg degree')
     plt.grid(True)
-    plt.savefig("../../../target/用户-产品网金额和平均度.png",dpi=1024,figsize=1024)
+    plt.savefig("../../../target/用户-产品网周期和平均度.png",dpi=1024,figsize=1024)
 
 
     plt.loglog(x, y,'yo',markersize = 5, marker='.')
     plt.grid(True)
-    plt.xlabel('ammount')
+    plt.xlabel('loan_term')
     plt.ylabel('avg degree')
-    plt.savefig("../../../target/用户-产品网金额和平均度-双log图.png",dpi=1024,figsize=1024)
+    plt.savefig("../../../target/用户-产品网周日和平均度-双log图.png",dpi=1024,figsize=1024)
