@@ -68,13 +68,13 @@ if __name__ == '__main__':
     x = range(len(degree))
     y = [z/float(sum(degree)) for z in degree]
 
-    plt.plot(x, y,'ro',markersize = 1, marker='.')
+    plt.plot(x, y,'ro',markersize = 5, marker='.')
     plt.xlabel('degree')
     plt.ylabel('degree P(K)')
     plt.grid(True)
     plt.savefig("../../../target/产品网-度和度分布.png",dpi=1024,figsize=1024)
 
-    plt.loglog(x, y,'ro',markersize = 1, marker='.')
+    plt.loglog(x, y,'ro',markersize = 5, marker='.')
     # plt.xlabel('degree')
     # plt.ylabel('degree P(K)')
     # plt.xlim(0,100)

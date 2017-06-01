@@ -75,7 +75,7 @@ if __name__ == '__main__':
     # fit_fn is now a function which takes in x and returns an estimate for y
 
     # plt.plot(x,y, 'yo', x, fit_fn(x), '--k',markersize = 5, marker='.')
-    plt.plot(x,y, 'yo',markersize = 1, marker='.')
+    plt.plot(x,y, 'yo',markersize = 5, marker='.')
 
 
     # plt.plot(x, y,'ro')
@@ -84,7 +84,6 @@ if __name__ == '__main__':
     plt.grid(True)
     plt.savefig("../../../target/用户网-度和度分布.png",dpi=1024,figsize=1024)
 
-    plt.loglog(x, y,'yo', markersize = 1, marker='.')
-    plt.plot(x, fit_fn(x))
+    plt.loglog(x, y,'yo', markersize = 5, marker='.')
     plt.grid(True)
     plt.savefig("../../../target/用户网-度和度分布-双log图.png",dpi=1024,figsize=1024)
