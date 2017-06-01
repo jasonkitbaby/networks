@@ -57,20 +57,19 @@ if __name__ == '__main__':
     for node in node_list:
         in_degree = G1.in_degree(node)
         out_degree =  G1.out_degree(node)
-        if(out_degree <=0):
+        if(out_degree >0 and in_degree<=0):
             out_users.append(node)
 
-    G2.remove_nodes_from(out_users)
-
     user_list = list(set(tenderer_nodes) - set(out_users))
-
+    G2.remove_nodes_from(user_list)
 
     # # 投影
     NSet = bipartite.sets(G2)
-    user = nx.project(G2, set(user_list))  # 向user节点投影
+    user = nx.project(G2, set(out_users))  # 向user节点投影
     product = nx.project(G2, set(loan_id_nodes))  # 向product节点投影
 
 
+    
     G3 = bipartite.projected_graph(G2, product)
  
 

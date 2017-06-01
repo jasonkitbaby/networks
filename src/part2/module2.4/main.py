@@ -16,7 +16,7 @@ from networkx.algorithms import bipartite
 if __name__ == '__main__':
     
   
-    f = open('../../../logs/part2-module2.3.log','w')	
+    f = open('../../../logs/part2-module2.4.log','w')	
     dataSet = "../../../data/10W_UTF8.csv"
     print("loading data....", dataSet, file=f)
     data = pd.read_csv(dataSet)
@@ -38,7 +38,7 @@ if __name__ == '__main__':
         loan_id = data.get_value(i, 'loanid')
         loaner_name = data.get_value(i, 'loaner_name')
         tender_name = data.get_value(i, 'tender_name')
-        product_amount = data.get_value(i, 'loan_term')
+        product_amount = data.get_value(i, 'level_value')
         
         G1.add_node(tender_name)  
         G1.add_node(loaner_name)
@@ -95,16 +95,16 @@ if __name__ == '__main__':
     x = list(ave_degree_dict.keys())
     y = list(ave_degree_dict.values())
     plt.plot(x, y,'yo',markersize = 5, marker='.')
-    plt.xlabel('loan_term')
+    plt.xlabel('level_value')
     plt.ylabel('avg degree')
     plt.title('out degree user')
     plt.grid(True)
-    plt.savefig("../../../target/出度用户-产品网周期和平均度.png",dpi=1024,figsize=1024)
+    plt.savefig("../../../target/出度用户-产品网等级和平均度.png",dpi=1024,figsize=1024)
 
 
     plt.loglog(x, y,'yo',markersize = 5, marker='.')
     plt.grid(True)
-    plt.xlabel('loan_term')
+    plt.xlabel('level_value')
     plt.ylabel('avg degree')
     plt.title('out degree user')
-    plt.savefig("../../../target/出度用户-产品网周期和平均度-双log图.png",dpi=1024,figsize=1024)
+    plt.savefig("../../../target/出度用户-产品网等级和平均度-双log图.png",dpi=1024,figsize=1024)

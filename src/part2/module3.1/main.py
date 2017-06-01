@@ -16,7 +16,7 @@ from networkx.algorithms import bipartite
 if __name__ == '__main__':
     
   
-    f = open('../../../logs/part2-module2.3.log','w')	
+    f = open('../../../logs/part2-module3.1.log','w')	
     dataSet = "../../../data/10W_UTF8.csv"
     print("loading data....", dataSet, file=f)
     data = pd.read_csv(dataSet)
@@ -31,14 +31,14 @@ if __name__ == '__main__':
     G2 = nx.Graph()
     tenderer_nodes = []
     loan_id_nodes = []
-    out_users = []
+    in_out_users = []
     loaner_name_list = []
     for i in range(len(data)):
         
         loan_id = data.get_value(i, 'loanid')
         loaner_name = data.get_value(i, 'loaner_name')
         tender_name = data.get_value(i, 'tender_name')
-        product_amount = data.get_value(i, 'loan_term')
+        product_amount = data.get_value(i, 'product_amount')
         
         G1.add_node(tender_name)  
         G1.add_node(loaner_name)
@@ -57,15 +57,18 @@ if __name__ == '__main__':
     for node in node_list:
         in_degree = G1.in_degree(node)
         out_degree =  G1.out_degree(node)
-        if(out_degree >0 and in_degree<=0):
-            out_users.append(node)
+        if(out_degree >0 and in_degree>0):
+            in_out_users.append(node)
 
-    user_list = list(set(tenderer_nodes) - set(out_users))
+    
+
+    user_list = list(set(tenderer_nodes) - set(in_out_users))
     G2.remove_nodes_from(user_list)
+
 
     # # 投影
     NSet = bipartite.sets(G2)
-    user = nx.project(G2, set(out_users))  # 向user节点投影
+    user = nx.project(G2, set(in_out_users))  # 向user节点投影
     product = nx.project(G2, set(loan_id_nodes))  # 向product节点投影
 
 
@@ -95,16 +98,16 @@ if __name__ == '__main__':
     x = list(ave_degree_dict.keys())
     y = list(ave_degree_dict.values())
     plt.plot(x, y,'yo',markersize = 5, marker='.')
-    plt.xlabel('loan_term')
+    plt.xlabel('amount')
     plt.ylabel('avg degree')
-    plt.title('out degree user')
+    plt.title('in out degree user')
     plt.grid(True)
-    plt.savefig("../../../target/出度用户-产品网周期和平均度.png",dpi=1024,figsize=1024)
+    plt.savefig("../../../target/入出度用户-产品网金额和平均度.png",dpi=1024,figsize=1024)
 
 
     plt.loglog(x, y,'yo',markersize = 5, marker='.')
     plt.grid(True)
-    plt.xlabel('loan_term')
+    plt.xlabel('amount')
     plt.ylabel('avg degree')
-    plt.title('out degree user')
-    plt.savefig("../../../target/出度用户-产品网周期和平均度-双log图.png",dpi=1024,figsize=1024)
+    plt.title('in out degree user')
+    plt.savefig("../../../target/入出度用户-产品网金额和平均度-双log图.png",dpi=1024,figsize=1024)
