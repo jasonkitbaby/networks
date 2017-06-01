@@ -18,8 +18,8 @@ from networkx.algorithms import bipartite
 
 
 if __name__ == '__main__':
-    f = open('log.txt','w')	
-    dataSet = "../../../data/2W_UTF8.csv"
+    f = open('../../../logs/part1-module5.1.log','w')	
+    dataSet = "../../../data/10W_UTF8.csv"
     print("loading data....", dataSet, file=f)
     data = pd.read_csv(dataSet)
     print(data.info(),file=f)
@@ -68,13 +68,13 @@ if __name__ == '__main__':
     x = range(len(degree))
     y = [z/float(sum(degree)) for z in degree]
 
-    plt.plot(x, y,'ro')
+    plt.plot(x, y,'ro',markersize = 1, marker='.')
     plt.xlabel('degree')
     plt.ylabel('degree P(K)')
     plt.grid(True)
     plt.savefig("../../../target/产品网-度和度分布.png",dpi=1024,figsize=1024)
 
-    plt.loglog(x, y,'ro')
+    plt.loglog(x, y,'ro',markersize = 1, marker='.')
     # plt.xlabel('degree')
     # plt.ylabel('degree P(K)')
     # plt.xlim(0,100)

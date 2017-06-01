@@ -19,8 +19,8 @@ from networkx.algorithms import bipartite
 
 
 if __name__ == '__main__':
-    f = open('log.txt','w')	
-    dataSet = "../../../data/2W_UTF8.csv"
+    f = open('../../../logs/part1-module4.1.logs','w')	
+    dataSet = "../../../data/10W_UTF8.csv"
     print("loading data....", dataSet, file=f)
     data = pd.read_csv(dataSet)
     print(data.info(),file=f)
@@ -74,7 +74,9 @@ if __name__ == '__main__':
     fit_fn = np.poly1d(fit) 
     # fit_fn is now a function which takes in x and returns an estimate for y
 
-    plt.plot(x,y, 'yo', x, fit_fn(x), '--k',markersize = 5, marker='.')
+    # plt.plot(x,y, 'yo', x, fit_fn(x), '--k',markersize = 5, marker='.')
+    plt.plot(x,y, 'yo',markersize = 1, marker='.')
+
 
     # plt.plot(x, y,'ro')
     plt.xlabel('degree')
@@ -82,7 +84,7 @@ if __name__ == '__main__':
     plt.grid(True)
     plt.savefig("../../../target/用户网-度和度分布.png",dpi=1024,figsize=1024)
 
-    plt.loglog(x, y,'yo', markersize = 5, marker='.')
+    plt.loglog(x, y,'yo', markersize = 1, marker='.')
     plt.plot(x, fit_fn(x))
     plt.grid(True)
     plt.savefig("../../../target/用户网-度和度分布-双log图.png",dpi=1024,figsize=1024)

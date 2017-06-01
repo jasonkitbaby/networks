@@ -14,8 +14,8 @@ from networkx.algorithms import bipartite
 
 
 if __name__ == '__main__':
-    f = open('log.txt','w')	
-    dataSet = "../../../data/2W_UTF8.csv"
+    f = open('../../../logs/part1-module4.2.log','w')	
+    dataSet = "../../../data/10W_UTF8.csv"
     print("loading data....", dataSet, file=f)
     data = pd.read_csv(dataSet)
     print(data.info(),file=f)
@@ -82,14 +82,14 @@ if __name__ == '__main__':
 
     x = list(deg_avg_clust.keys())
     y = list(deg_avg_clust.values())
-    plt.plot(x, y,'ro')
+    plt.plot(x, y,'yo',markersize = 1, marker='.')
     plt.xlabel('degree')
     plt.ylabel('avg custer')
     plt.grid(True)
     plt.savefig("../../../target/用户网度和群聚系数.png",dpi=1024,figsize=1024)
 
 
-    plt.loglog(x, y,'ro')
+    plt.loglog(x, y,'yo',markersize = 1, marker='.')
     plt.grid(True)
     plt.xlabel('degree')
     plt.ylabel('avg custer')

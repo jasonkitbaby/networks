@@ -16,7 +16,7 @@ from networkx.algorithms import bipartite
 if __name__ == '__main__':
     
   
-    f = open('log.txt','w')	
+    f = open('../../../logs/part1-module0.logs','w')	
     dataSet = "../../../data/2W_UTF8.csv"
     print("loading data....", dataSet, file=f)
     data = pd.read_csv(dataSet)
@@ -35,7 +35,7 @@ if __name__ == '__main__':
         G.add_weighted_edges_from([(tender_name, loan_id, 1.0)])
 
     pos = nx.spring_layout(G)
-    nx.draw_networkx(G, pos, with_labels=False,node_size=1, width=0.1, edge_color='black',dpi=1024, figsize=2048)
+    nx.draw_networkx(G, pos, with_labels=False,node_size=0.5, width=0.1, edge_color='gray',node_color=('red','green'),dpi=1024, figsize=2048)
     plt.savefig("../../../target/用户-产品-二分网络图.png",dpi=1024,figsize=1024)
     # plt.show()
 
