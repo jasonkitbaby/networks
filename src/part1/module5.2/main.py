@@ -15,7 +15,7 @@ from networkx.algorithms import bipartite
 
 if __name__ == '__main__':
     f = open('../../../logs/part1-module5.2.log','w')	
-    dataSet = "../../../data/2W_UTF8.csv"
+    dataSet = "../../../data/10W_UTF8.csv"
     print("loading data....", dataSet, file=f)
     data = pd.read_csv(dataSet)
     print(data.info(),file=f)
