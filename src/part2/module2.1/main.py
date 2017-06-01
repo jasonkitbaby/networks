@@ -9,7 +9,7 @@ from networkx.algorithms import bipartite
 
 
 #
-#  构建“用户----产品 二分网 
+#  只有出度用户
 
 
 
@@ -33,10 +33,5 @@ if __name__ == '__main__':
         G.add_node(tender_name,node_color='r')
         G.add_node(loaner_name,node_color='g')
         G.add_weighted_edges_from([(tender_name, loaner_name, 1.0)])
-
-    pos = nx.spring_layout(G)
-    nx.draw_networkx(G, pos, with_labels=False,node_size=0.5, width=0.1, edge_color='gray',node_color=('red','green'),dpi=1024, figsize=2048)
-    plt.savefig("../../../target/用户-用户-有向图.png",dpi=1024,figsize=1024)
-    # plt.show()
-
-    print("graph info:", nx.info(G), file=f)
+    
+    out_users = []
